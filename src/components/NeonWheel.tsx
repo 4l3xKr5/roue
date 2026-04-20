@@ -7,7 +7,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-interface Segment {
+export interface Segment {
   id: number;
   label: string;
   color: string;

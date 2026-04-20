@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import NeonWheel from './components/NeonWheel'
+import NeonWheel, { type Segment } from './components/NeonWheel'
 import { motion, AnimatePresence } from 'framer-motion'
 import { RefreshCw, Coins } from 'lucide-react'
 
-const SEGMENTS = [
+const SEGMENTS: Segment[] = [
   { id: 1, label: '500€', color: '#FFD700', textColor: '#000' }, // Gold
   { id: 2, label: '0€', color: '#1C1C24', textColor: '#39FF14' },
   { id: 3, label: '50€', color: '#39FF14', textColor: '#000' }, // Neon Green
@@ -21,7 +21,7 @@ const SEGMENTS = [
 function App() {
   const [winnerIndex, setWinnerIndex] = useState<number | null>(null);
   const [isSpinning, setIsSpinning] = useState(false);
-  const [result, setResult] = useState<typeof SEGMENTS[0] | null>(null);
+  const [result, setResult] = useState<Segment | null>(null);
 
   const handleSpin = () => {
     if (isSpinning) return;
