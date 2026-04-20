@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-pink: #FF00FF;
+  --color-neon-blue: #00FFFF;
+  --color-neon-green: #39FF14;
+  --color-neon-orange: #FF6600;
+  --color-neon-purple: #BC13FE;
+  
+  --color-premium-dark: #0A0A0F;
+  --color-premium-gray: #1C1C24;
+
+  --font-modern: "Outfit", sans-serif;
+
+  --animate-glow-slow: glow 3s ease-in-out infinite alternate;
+  --animate-flicker: flicker 0.5s infinite;
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #FF00FF, 0 0 40px #FF00FF; }
+    to { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #FF00FF, 0 0 20px #FF00FF; }
+  }
+  @keyframes flicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 1; }
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.4; }
+  }
+}
+
+@source "../src/**/*.{js,ts,jsx,tsx}";
+@source "../index.html";
+
+@layer base {
+  body {
+    @apply bg-premium-dark text-gray-100 min-h-screen overflow-x-hidden font-modern;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(15, 15, 25, 1) 0%, rgba(5, 5, 10, 1) 100%);
+  }
+}
+
+@layer components {
+  .neon-border-pink {
+    @apply border-neon-pink shadow-[0_0_15px_#FF00FF,inset_0_0_10px_#FF00FF];
+  }
+  .neon-text-pink {
+    @apply text-neon-pink [text-shadow:0_0_7px_#FF00FF,0_0_10px_#FF00FF];
+  }
+  .neon-text-cyan {
+    @apply text-neon-blue [text-shadow:0_0_7px_#00FFFF,0_0_10px_#00FFFF];
+  }
+  .neon-text-green {
+    @apply text-neon-green [text-shadow:0_0_7px_#39FF14,0_0_10px_#39FF14];
+  }
+  
+  .premium-card {
+    @apply bg-premium-gray/40 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl;
+  }
+
+  .glow-filter {
+    filter: url(#neon-glow);
+  }
+}
+
+/* Custom SVG Glow Filter */
+#neon-glow-filter {
+  height: 0;
+  width: 0;
+  position: absolute;
+}
